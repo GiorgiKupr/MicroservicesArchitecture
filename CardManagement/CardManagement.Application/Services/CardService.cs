@@ -39,7 +39,7 @@ namespace CardManagement.Application.Services
             };
             var guid = _cardRepository.Add(card);
             var eventCreated = new CardCreated { CardId = card.CardId, CardHolderName = card.CardHolderName, CardType = card.CardType };
-            await _producer.PublishAsync("card.crated", eventCreated);
+            await _producer.PublishAsync("card.created", eventCreated);
         }
 
         public async Task DeactivateCard(Guid Id)
